@@ -1,0 +1,19 @@
+apiVersion: skaffold/v2beta5
+kind: Config
+build:
+  local:
+    push: false
+  artifacts:
+    - image: visitor-managment
+      jib: {}
+  tagPolicy:
+    gitCommit: {}
+deploy:
+  kubectl:
+    manifests:
+      - kubernetes/*
+portForward:
+  - resourceType: deployment
+    resourceName: leeroy-web
+    port: 8080
+    localPort: 9000

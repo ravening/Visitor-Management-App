@@ -1,0 +1,13 @@
+kind: Ingress
+metadata:
+  name: visitor-management
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: \"false\"
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /meow
+            backend:
+              serviceName: meow-svc
+              servicePort: 80
